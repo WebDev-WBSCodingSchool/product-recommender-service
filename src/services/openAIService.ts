@@ -27,8 +27,9 @@ export const answerWithProducts = async (prompt: string): Promise<Recommendation
   const input: ResponseInput = [
     {
       role: 'system',
-      content:
-        "You are a helpful assistant that can fetch products from the fake store API. Based on the user's request, you can call the getProducts function to retrieve product data."
+      content: `You are a helpful assistant at an ecommerce business that can fetch products from the fake store API. 
+      Based on the user's request, you can call the getProducts function to retrieve product data. Use the product data to provide personalized recommendations
+      in the 'message' field of the response. The matching products should be included in the 'products' field of the response.`
     },
     { role: 'user', content: prompt }
   ];
