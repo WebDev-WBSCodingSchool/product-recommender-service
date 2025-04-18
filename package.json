@@ -4,11 +4,13 @@
   "description": "A simple microservice for product recommendations using LLMs with function calling",
   "main": "dist/app.js",
   "scripts": {
-    "watch:build": "tsc --watch",
-    "watch:server": "node --watch dist/app.js",
-    "dev": "concurrently --names \"TSC,EXPRESS\" --prefix-colors \"bgBlue.bold,bgGreen.bold\" \"npx tsc --watch\" \"node -r dotenv/config --watch --watch-preserve-output dist/app.js\"",
-    "prestart": "npx tsc",
-    "start": "node dist/app.js"
+    "build": "rimraf dist && npx tsc",
+    "prestart": "npm run build",
+    "start": "node dist/app.js",
+    "predev": "npm run build",
+    "watch:build": "npx tsc -w",
+    "watch:server": "node -r dotenv/config --watch --watch-preserve-output dist/app.js",
+    "dev": "concurrently --raw \"npm run watch:build\" \"npm run watch:server\""
   },
   "keywords": [],
   "author": "",
@@ -18,7 +20,7 @@
     "@types/node": "^22.14.1",
     "concurrently": "^9.1.2",
     "dotenv": "^16.5.0",
-    "ts-node": "^10.9.2",
+    "rimraf": "^6.0.1",
     "typescript": "^5.8.3"
   },
   "dependencies": {
