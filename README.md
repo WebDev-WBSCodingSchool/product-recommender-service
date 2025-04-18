@@ -69,11 +69,11 @@ Run the server in development mode with:
 npm run dev
 ```
 
-This will start the TypeScript compiler in watch mode and start the application from the `dist` directory.
+This will attempt to build the app with TypeScript before entering the compiler in watch mode and starting the application from the `dist` directory.
 
 ### 🏁 Production
 
-Start the server with:
+This app is definitely not production ready but the built application can be ran with:
 
 ```bash
 npm start
